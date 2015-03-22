@@ -3,19 +3,62 @@
 <head>
     <title>COMC1745 Exercise 2F Group Project</title>
     <link href="rootstyle.css" rel="stylesheet" />
-</head>
-<body>
-    <header>
-        <h2>COMC1745 Exercise 2F Group Project</h2>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="KClark1M1/Home.html">KClart</a></li>
-            <li><a href="RHogan/default.html">RHogan</a></li>
-            <li><a href="#">Site 3</a></li>
-        </ul>
-        <div> Here is a change that i have made from a contributor account it should be reflected in azure</div>
-    </nav>
 
-</body>
+    <link href="TestForm.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#content").find("[id^='tab']").hide(); // Hide all content
+            $("#tabs li:first").attr("id", "current"); // Activate the first tab
+            $("#content #tab1").fadeIn(); // Show first tab's content
+
+            $('#tabs a').click(function (e) {
+                e.preventDefault();
+                if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                    return;
+                }
+                else {
+                    $("#content").find("[id^='tab']").hide(); // Hide all content
+                    $("#tabs li").attr("id", ""); //Reset id's
+                    $(this).parent().attr("id", "current"); // Activate this
+                    $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+                }
+            });
+        });
+    </script>
+</head>
+    <body>
+        <header>
+            <h2>COMC1745 Exercise 2F Group Project</h2>
+        </header>
+        <form id="form1">
+            <div>
+                <ul id="tabs">
+                    <li><a href="KClark1M1/Home.html" name="tab1">KClart</a></li>
+                    <li><a href="RHogan/default.html" name="tab2">RHogan</a></li>
+                    <li><a href="#" name="tab3">Site 3</a></li>
+                    <li><a href="#" name="tab4">Four</a></li>
+                    <li><a href="#" name="tab5">Five</a></li>
+                    <li><a href="#" name="tab6">Six</a></li>
+                    <li><a href="#" name="tab7">Seven</a></li>
+                    <li><a href="#" name="tab8">Eight</a></li>
+                </ul>
+
+                <div id="content">
+                    <div id="tab1">
+                        
+                    </div>
+                    <div id="tab2">
+                        
+                    </div>
+                    <div id="tab3">...</div>
+                    <div id="tab4">...</div>
+                    <div id="tab5">...</div>
+                    <div id="tab6">...</div>
+                    <div id="tab7">...</div>
+                    <div id="tab8">...</div>
+                </div>
+            </div>
+        </form>
+    </body>
 </html>

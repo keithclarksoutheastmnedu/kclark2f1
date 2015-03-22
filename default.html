@@ -1,26 +1,60 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>WebSite Content Exercise 2F</title>
+    <title>COMC1745 Exercise 2F Group Project</title>
+    <link href="rootstyle.css" rel="stylesheet" />
+
+    <link href="TestForm.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#content").find("[id^='tab']").hide(); // Hide all content
+            $("#tabs li:first").attr("id", "current"); // Activate the first tab
+            $("#content #tab1").fadeIn(); // Show first tab's content
+
+            $('#tabs a').click(function (e) {
+                e.preventDefault();
+                if ($(this).closest("li").attr("id") == "current") { //detection for current tab
+                    return;
+                }
+                else {
+                    $("#content").find("[id^='tab']").hide(); // Hide all content
+                    $("#tabs li").attr("id", ""); //Reset id's
+                    $(this).parent().attr("id", "current"); // Activate this
+                    $('#' + $(this).attr('name')).fadeIn(); // Show content for the current tab
+                }
+            });
+        });
+
+                
+    </script>
 </head>
 <body>
-    <div>Exercise 2F1, Keith Clark, Ryan Hogan, AddNameHere</div>
-    <p>Site 1</p>
-    <ul>
-        <li>
-            <a href="KClark1M1/Home.html">Home</a>
-        </li>
-        <li>
-            <a href="RHogan/default.html">Default</a>
-        </li>
-        <li>
-            <a href="">AddLinkHere</a>
-        </li>
-        </ul>
-        <!-- test code to see if azure git works -->
+    <header>
+        <h2>COMC1745 Exercise 2F Group Project</h2>
+    </header>
+    <form id="form1">
         <div>
-            <h3>azure git upload works</h3>
+            <ul id="tabs">
+                <li><a href="KClark1M1/Home.html" name="tab1">KClark</a></li>
+                <li><a href="RHogan/default.html" name="tab2">RHogan</a></li>
+                <li><a href="#" name="tab3">Site 3</a></li>
+                
+            </ul>
+
+            <div id="content">
+                <div id="tab1" onclick="kclark" onload="kclark" >
+                    <ul>
+                        <li><a href="KClark1M1/Home.html" name="tab1">KClark</a></li>
+                    </ul>
+                </div>
+                <div id="tab2" onclick="kclark" onload="rHogan">
+
+                </div>
+                <div id="tab3">...</div>
+                
+            </div>
         </div>
-    <!-- test code to see if the push works -->
+    </form>
 </body>
 </html>
